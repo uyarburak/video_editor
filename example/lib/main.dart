@@ -99,7 +99,9 @@ class _VideoEditorState extends State<VideoEditor> {
         .then((_) => setState(() {}))
         .catchError((error) {
       // handle minumum duration bigger than video duration error
-      Navigator.pop(context);
+      if (mounted) {
+        Navigator.pop(context);
+      }
     }, test: (e) => e is VideoMinDurationError);
   }
 
@@ -177,8 +179,8 @@ class _VideoEditorState extends State<VideoEditor> {
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: () async => false,
+    return PopScope(
+      canPop: false,
       child: Scaffold(
         backgroundColor: Colors.black,
         body: _controller.initialized
@@ -238,12 +240,12 @@ class _VideoEditorState extends State<VideoEditor> {
                                   margin: const EdgeInsets.only(top: 10),
                                   child: Column(
                                     children: [
-                                      TabBar(
+                                      const TabBar(
                                         tabs: [
                                           Row(
                                               mainAxisAlignment:
                                                   MainAxisAlignment.center,
-                                              children: const [
+                                              children: [
                                                 Padding(
                                                     padding: EdgeInsets.all(5),
                                                     child: Icon(
@@ -253,7 +255,7 @@ class _VideoEditorState extends State<VideoEditor> {
                                           Row(
                                             mainAxisAlignment:
                                                 MainAxisAlignment.center,
-                                            children: const [
+                                            children: [
                                               Padding(
                                                   padding: EdgeInsets.all(5),
                                                   child:
