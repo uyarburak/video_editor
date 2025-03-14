@@ -106,7 +106,7 @@ class _ThumbnailSliderState extends State<ThumbnailSlider> {
         stream: _stream,
         builder: (_, snapshot) {
           final data = snapshot.data;
-          return snapshot.hasData
+          return snapshot.hasData && data != null && data.isNotEmpty
               ? ListView.builder(
                   scrollDirection: Axis.horizontal,
                   padding: EdgeInsets.zero,
@@ -116,7 +116,7 @@ class _ThumbnailSliderState extends State<ThumbnailSlider> {
                     valueListenable: _transform,
                     builder: (_, transform, __) {
                       final index =
-                          getBestIndex(_neededThumbnails, data!.length, i);
+                          getBestIndex(_neededThumbnails, data.length, i);
 
                       return Stack(
                         children: [
