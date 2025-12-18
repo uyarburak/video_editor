@@ -14,7 +14,7 @@ void main() => runApp(
         theme: ThemeData(
           primarySwatch: Colors.grey,
           brightness: Brightness.dark,
-          tabBarTheme: const TabBarTheme(
+          tabBarTheme: const TabBarThemeData(
             indicator: UnderlineTabIndicator(
               borderSide: BorderSide(color: Colors.white),
             ),

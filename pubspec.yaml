@@ -18,10 +18,7 @@ dependencies:
   path_provider: ^2.0.12
   transparent_image: ^2.0.1 # show fade-in placeholder in thumbnails generation
   video_player: ^2.6.1
-  video_thumbnail:
-    git:
-      url: https://github.com/uyarburak/video_thumbnail
-      ref: "26f5cbb"
+  get_video_thumbnail: ^0.7.0
 
 dev_dependencies:
   flutter_test:

@@ -384,12 +384,19 @@ class VideoEditorController extends ChangeNotifier {
 
   /// Generate cover thumbnail at [startTrim] time in milliseconds
   void generateDefaultCoverThumbnail() async {
-    final defaultCover = await generateSingleCoverThumbnail(
-      file.path,
-      timeMs: startTrim.inMilliseconds,
-      quality: coverThumbnailsQuality,
-    );
-    updateSelectedCover(defaultCover);
+    try {
+      final defaultCover = await generateSingleCoverThumbnail(
+        file.path,
+        timeMs: startTrim.inMilliseconds,
+        quality: coverThumbnailsQuality,
+      );
+      updateSelectedCover(defaultCover);
+    } catch (e) {
+      debugPrint('Error generating default cover thumbnail: $e');
+      // Set a cover with null thumbData to prevent crashes
+      updateSelectedCover(
+          CoverData(thumbData: null, timeMs: startTrim.inMilliseconds));
+    }
   }
 
   /// Get the [selectedCover] notifier
