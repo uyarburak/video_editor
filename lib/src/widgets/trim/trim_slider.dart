@@ -358,13 +358,17 @@ class _TrimSliderState extends State<TrimSlider>
             clamp: false,
           );
         } else {
+          final double minLeft = _horizontalMargin;
+          final double maxLeft =
+              _trimLayout.width + _horizontalMargin - _rect.width;
+
+          // If layout is not ready OR rect wider than layout, don't clamp with invalid range
+          final double safeLeft = (maxLeft < minLeft)
+              ? minLeft
+              : posLeft.dx.clamp(minLeft, maxLeft).toDouble();
+
           // avoid rect to be out of bounds
-          _changeTrimRect(
-            left: posLeft.dx.clamp(
-              _horizontalMargin,
-              _trimLayout.width + _horizontalMargin - _rect.width,
-            ),
-          );
+          _changeTrimRect(left: safeLeft);
         }
         break;
       case _TrimBoundaries.progress:
