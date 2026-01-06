@@ -3,12 +3,12 @@
 import 'dart:io';
 
 import 'package:flutter/foundation.dart';
-import 'package:get_video_thumbnail/index.dart';
+import 'package:get_thumbnail_video/index.dart';
 import 'package:path/path.dart' as path;
 import 'package:path_provider/path_provider.dart';
 import 'package:video_editor/src/controller.dart';
 import 'package:video_editor/src/models/file_format.dart';
-import 'package:get_video_thumbnail/get_video_thumbnail.dart';
+import 'package:get_thumbnail_video/video_thumbnail.dart';
 
 class FFmpegVideoEditorExecute {
   const FFmpegVideoEditorExecute({
